@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Amo, María</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #ff0066;
+            animation: fadeIn 2s ease-in-out;
+            display: inline-block;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1:hover {
+            color: #0066ff;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .writing-effect {
+            border-right: 3px solid #ff0066;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 3s steps(30, end), blink-caret 0.5s step-end infinite alternate;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            50% { border-color: transparent; }
+        }
+
+        button {
+            margin: 20px;
+            padding: 15px 30px;
+            font-size: 1rem;
+            background-color: #0066ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #ff0066;
+        }
+
+        #footer {
+            margin-top: 50px;
+            font-size: 1.2rem;
+            color: gray;
+        }
+
+        /* Animación de corazones */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff0066;
+            transform: rotate(45deg);
+            animation: fly 3s linear infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff0066;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 10px;
+            top: 0;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: rotate(45deg) translateX(0) translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(45deg) translateX(200px) translateY(-600px);
+                opacity: 0;
+            }
+        }
+
+        /* Imagen personalizada */
+        .image-container {
+            margin-top: 30px;
+        }
+
+        .image-container img {
+            max-width: 70px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Te amo, María Jose 💖</h1>
+    </div>
+
+    <div class="image-container">
+        <img src="img/WhatsApp Image 2024-10-03 at 16.10.56.jpeg" alt="Foto de amor">
+    </div>
+
+    <button onclick="changeBackgroundColor()">Cambiar color de fondo</button>
+    <button onclick="showLoveMessage()">Mostrar mensaje especial</button>
+    <button onclick="generateHeart()">Generar corazones</button>
+
+    <div id="footer">Con todo mi amor, para Mi princesa</div>
+
+    <script>
+        function changeBackgroundColor() {
+            const colors = ['#ffcccc', '#ccffcc', '#ccccff', '#ffffcc', '#ffccff', '#f0e68c'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        function showLoveMessage() {
+            alert('Eres la persona más especial en mi vida, espero tenerte para siempre conmigo, María Jose 💖');
+        }
+
+        function generateHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+
+            // Eliminar el corazón después de la animación
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+        }
+
+        // Efecto de escritura automática en el h1
+        window.onload = () => {
+            const h1 = document.querySelector('.writing-effect');
+            h1.classList.add('show');
+        }
+    </script>
+
+</body>
+</html>
